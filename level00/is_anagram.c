@@ -12,17 +12,15 @@
 
 int		is_anagram(char *a, char *b)
 {
-	int	count_a;
-	int	count_b;
+	int	ret;
 
-	count_a = 0;
-	count_b = 0;
+	ret = 0;
 	while (*a != '\0' && *b != '\0')
 	{
-		count_a += *a;
-		count_b += *b;
+		ret += *a;
+		ret -= *b;
 		a += 1;
 		b += 1;
 	}
-	return (count_a == count_b ? 1 : 0);
+	return (ret == 0 ? 1 : 0);
 }
