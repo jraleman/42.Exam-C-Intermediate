@@ -1,39 +1,30 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   count_of_2.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/06 20:59:20 by jaleman           #+#    #+#             */
-/*   Updated: 2018/02/06 20:59:21 by jaleman          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-// Source: https://stackoverflow.com/q/20945790
-// Fails test 9 :(
-
-int		count_of_2(int n)
+// function to count number of two's in a particular number
+void	ft_counttwo(int nb, int *counter)
 {
-	int	count;
-	int msb;
-	int	power;
-	int	leftover;
-
-	count = 0;
-	power = 1;
-	if (n > 2)
+	if (nb >= 10)
 	{
-		while (power * 10 < n)
-			power *= 10;
-		msb = n / power;
-		leftover = n % power;
-		if (msb > 2)
-			count += power;
-		if (msb == 2)
-			count += leftover + 1;
-		count += msb * count_of_2(power);
-		count += count_of_2(leftover);
+		ft_counttwo(nb / 10, counter);
+		ft_counttwo(nb % 10, counter);
 	}
-	return (count);
+	if (nb == 2)
+	{
+		*counter += 1;
+	}
+}
+
+int	count_of_2(int nb)
+{
+	int i;
+	int counter;
+	
+	i = 2;
+	counter = 0;
+	if (nb <= 1)
+		return (0);
+	while (i <= nb)
+	{
+		ft_counttwo(i, &counter);
+		i++;
+	}
+	return (counter);
 }
