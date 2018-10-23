@@ -12,15 +12,34 @@
 
 int		is_anagram(char *a, char *b)
 {
-	int	ret;
+		int	i = -1;
+		int table[127] = {0};
 
-	ret = 0;
-	while (*a != '\0' && *b != '\0')
-	{
-		ret += *a;
-		ret -= *b;
-		a += 1;
-		b += 1;
-	}
-	return (ret == 0 ? 1 : 0);
+		while (*a != '\0')
+		{
+				table[(int)*a] += 1;
+				a += 1
+		}
+		while (*b != '\0')
+		{
+				table[(int)*b] -= 1;
+				b += 1
+		}
+		while (++i < 126)
+				if (table[i] != 0)
+					break ;
+		return (i < 126 ? 0 : 1);
 }
+
+/*
+#include <stdio.h>
+
+int 	main(void)
+{
+		char 	*a = "cinema";
+		char	*b = "iceman";
+
+		printf("%s\n", (is_anagram(a, b) ? "Anagram" : "Nada"));
+		return (0);
+}
+*/
