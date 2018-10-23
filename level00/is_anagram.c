@@ -18,12 +18,12 @@ int		is_anagram(char *a, char *b)
 		while (*a != '\0')
 		{
 				table[(int)*a] += 1;
-				a += 1
+				a += 1;
 		}
 		while (*b != '\0')
 		{
 				table[(int)*b] -= 1;
-				b += 1
+				b += 1;
 		}
 		while (++i < 126)
 				if (table[i] != 0)
