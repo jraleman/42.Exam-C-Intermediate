@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void		count_number(int nb, int *counter)
+static void	count_number(int nb, int *counter)
 {
 		if (nb >= 10)
 		{
@@ -29,8 +29,6 @@ int			count_of_2(int nb)
 
 		i = 2;
 		counter = 0;
-		if (nb < 0)
-				return (0);
 		while (i <= nb)
 		{
 				count_number(i, &counter);
@@ -38,3 +36,13 @@ int			count_of_2(int nb)
 		}
 		return (counter);
 }
+
+/*
+#include <stdio.h>
+
+int main(void)
+{
+		printf("%i\n", count_of_2(25));
+		return (0);
+}
+*/
