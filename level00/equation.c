@@ -12,52 +12,41 @@
 
 #include <stdio.h>
 
-static int	join_digits(int left_digit, int right_digit)
+int		print_digits(int a, int b, int c)
 {
-		return ((left_digit * 10) + right_digit);
+	return (printf("A = %d, B = %d, C = %d\n", a, b, c));
 }
 
-static void print_values(int a, int b, int c)
+int		convert_digits(int i, int j, int k)
 {
-		printf("A = %d, ", a);
-		printf("B = %d, ", b);
-		printf("C = %d", c);
-		printf("\n");
-		return ;
+	return (((i * 10) + j) + ((k * 10) + i));
 }
 
-void 				equation(int n)
-{
-		int	num_a = 0;
-		int	num_b = 0;
-		int	num_c = 0;
-		int	total_sum = 0;
 
-		while (num_a < 10)
-		{
-				while (num_b < 10)
-				{
-						while (num_c < 10)
-						{
-								total_sum = join_digits(num_a, num_b) \
-														+ join_digits(num_c, num_a);
-								if (total_sum == n)
-										print_values(num_a, num_b, num_c);
-								num_c += 1;
-						}
-						num_c = 0;
-						num_b += 1;
-				}
-				num_b = 0;
-				num_a += 1;
-		}
-		return ;
+int		check_digits(int n, int i, int j, int k)
+{
+	return ((convert_digits(i, j, k) == n) ? 1 : 0);
+}
+
+void	equation(int n)
+{
+	if (n < 1)
+		print_digits(0, 0, 0);
+	else
+		for (int i = 0; i < 10; i += 1)
+			for (int j = 0; j < 10; j += 1)
+				for (int k = 0; k < 10; k += 1)
+					if (check_digits(n, i, j, k))
+						print_digits(i, j, k);
+	return ;
 }
 
 /*
-int 				main(void)
+#include <stdlib.h>
+
+int 	main(int argc, const char *argv[])
 {
-	equation(42);
+	equation(atoi(argv[1]));
 	return (0);
 }
 */
