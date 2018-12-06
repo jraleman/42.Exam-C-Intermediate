@@ -51,6 +51,8 @@ void                push(struct s_stack *stack, void *content)
     node->content = content;
     node->next = stack->top;
     stack->top = node;
+    free(node);
+    node = NULL;
     return ;
 }
 

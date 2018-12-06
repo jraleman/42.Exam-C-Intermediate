@@ -50,7 +50,7 @@ static int  count_alpha(char *str)
     return (0);
 }
 
-int       main(int argc, char const *argv[])
+int         main(int argc, char const *argv[])
 {
     if (argc == 2)
         count_alpha((char *)argv[1]);

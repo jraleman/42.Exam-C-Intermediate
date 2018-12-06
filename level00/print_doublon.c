@@ -12,31 +12,39 @@
 
 #include <stdio.h>
 
+/*
+** ...
+*/
+
 void    print_doublon(int *a, int na, int *b, int nb)
 {
-    int counter_a = 0;
-    int counter_b = 0;
-    int total_elm = 0;
+    int i = 0;
+    int j = 0;
+    int total = 0;
 
-    while (na > counter_a && nb > counter_b)
+    while (na > i && nb > j)
     {
-        if (a[counter_a] == b[counter_b])
+        if (a[i] == b[j])
         {
-            if (total_elm > 0)
+            if (total > 0)
                 printf(" ");
-            printf("%i", a[counter_a]);
-            counter_a += 1;
-            counter_b += 1;
-            total_elm += 1;
+            printf("%i", a[i]);
+            i += 1;
+            j += 1;
+            total += 1;
         }
-        else if (a[counter_a] > b[counter_b])
-            counter_b += 1;
+        else if (a[i] > b[j])
+            j += 1;
         else
-            counter_a += 1;
+            i += 1;
     }
     printf("\n");
     return ;
 }
+
+/*
+** Main function. Uncomment to test this file!
+*/
 
 /*
 int     main(void)

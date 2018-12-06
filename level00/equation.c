@@ -12,21 +12,36 @@
 
 #include <stdio.h>
 
+/*
+** ...
+*/
+
 int		print_digits(int a, int b, int c)
 {
 	return (printf("A = %d, B = %d, C = %d\n", a, b, c));
 }
+
+/*
+** ...
+*/
 
 int		convert_digits(int i, int j, int k)
 {
 	return (((i * 10) + j) + ((k * 10) + i));
 }
 
+/*
+** ...
+*/
 
 int		check_digits(int n, int i, int j, int k)
 {
 	return ((convert_digits(i, j, k) == n) ? 1 : 0);
 }
+
+/*
+** ...
+*/
 
 void	equation(int n)
 {
@@ -40,6 +55,10 @@ void	equation(int n)
 						print_digits(i, j, k);
 	return ;
 }
+
+/*
+** Main function. Uncomment to test this file!
+*/
 
 /*
 #include <stdlib.h>

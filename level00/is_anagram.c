@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+** ...
+*/
+
 int		is_anagram(char *a, char *b)
 {
 		int	i = -1;
@@ -30,6 +34,10 @@ int		is_anagram(char *a, char *b)
 					break ;
 		return (i < 126 ? 0 : 1);
 }
+
+/*
+** Main function. Uncomment to test this file!
+*/
 
 /*
 #include <stdio.h>

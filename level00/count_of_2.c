@@ -10,31 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	count_number(int nb, int *counter)
+/*
+** ...
+*/
+
+static void	count_number(int nb, int *count)
 {
 		if (nb >= 10)
 		{
-				count_number(nb / 10, counter);
-				count_number(nb % 10, counter);
+				count_number(nb / 10, count);
+				count_number(nb % 10, count);
 		}
 		if (nb == 2)
-				*counter += 1;
+				*count += 1;
 		return ;
 }
+
+/*
+** ...
+*/
 
 int			count_of_2(int nb)
 {
 		int i;
-		int counter;
+		int count;
 
-		i = 2;
-		counter = 0;
-		while (i <= nb)
-		{
-				count_number(i, &counter);
-				i += 1;
-		}
-		return (counter);
+		i = 1;
+		count = 0;
+		while (++i <= nb)
+				count_number(i, &count);
+		return (count);
 }
 
 /*

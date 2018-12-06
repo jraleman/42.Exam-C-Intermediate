@@ -25,17 +25,17 @@ struct					s_node
 
 int				height_tree(struct s_node *root)
 {
-		int		curr_height;
-		int		max_height;
+		int		tmp = 0;
+		int		height = 0;
 
-		if (root == NULL)
-			return (0);
-		max_height = 0;
-		for (size_t i = 0; root->nodes[i]; i++)
-		{
-				curr_height = height_tree(root->nodes[i]) + 1;
-				if (curr_height > max_height)
-					max_height = curr_height;
-		}
-		return (max_height);
+		if (root != NULL)
+    {
+      for (int i = 0; root->nodes[i]; i += 1)
+      {
+          tmp = height_tree(root->nodes[i]) + 1;
+          if (tmp > height)
+            height = tmp;
+      }
+    }
+		return (height);
 }
