@@ -13,46 +13,45 @@
 #include <stdio.h>
 
 /*
-** ...
+** Prints the values of the digits to the stdout.
 */
 
-int		print_digits(int a, int b, int c)
+static void	print_digits(int a, int b, int c)
 {
-	return (printf("A = %d, B = %d, C = %d\n", a, b, c));
+	printf("A = %d, B = %d, C = %d\n", a, b, c);
+	return ;
 }
 
 /*
-** ...
+** Return the result of the following equation: AB + CA = n
 */
 
-int		convert_digits(int i, int j, int k)
+static int	calculate_digits(int a, int b, int c)
 {
-	return (((i * 10) + j) + ((k * 10) + i));
+	return (((a * 10) + b) + ((c * 10) + a));
 }
 
 /*
-** ...
+** Check if the equation is balanced, and return true if it does.
 */
 
-int		check_digits(int n, int i, int j, int k)
+static int	check_digits(int n, int a, int b, int c)
 {
-	return ((convert_digits(i, j, k) == n) ? 1 : 0);
+	return ((calculate_digits(a, b, c) == n) ? 1 : 0);
 }
 
 /*
-** ...
+** If the equation is balanced, zero (0), prints to stdout all the possible
+** values of A, B, C
 */
 
-void	equation(int n)
+void		equation(int n)
 {
-	if (n < 1)
-		print_digits(0, 0, 0);
-	else
-		for (int i = 0; i < 10; i += 1)
-			for (int j = 0; j < 10; j += 1)
-				for (int k = 0; k < 10; k += 1)
-					if (check_digits(n, i, j, k))
-						print_digits(i, j, k);
+	for (int i = 0; i < 10; i += 1)
+		for (int j = 0; j < 10; j += 1)
+			for (int k = 0; k < 10; k += 1)
+				if (check_digits(n, i, j, k))
+					print_digits(i, j, k);
 	return ;
 }
 
@@ -65,7 +64,8 @@ void	equation(int n)
 
 int 	main(int argc, const char *argv[])
 {
-	equation(atoi(argv[1]));
+	if (argc == 2)
+		equation(atoi(argv[1]));
 	return (0);
 }
 */

@@ -11,28 +11,28 @@
 /* ************************************************************************** */
 
 /*
-** ...
+** Returns whether the first string is an anagram of the second or not.
 */
 
 int		is_anagram(char *a, char *b)
 {
-		int	i = -1;
-		int table[127] = {0};
+	int	i = -1;
+	int	tab[127] = {0};
 
-		while (*a != '\0')
-		{
-				table[(int)*a] += 1;
-				a += 1;
-		}
-		while (*b != '\0')
-		{
-				table[(int)*b] -= 1;
-				b += 1;
-		}
-		while (++i < 126)
-				if (table[i] != 0)
-					break ;
-		return (i < 126 ? 0 : 1);
+	while (*a != '\0')
+	{
+		tab[(int)*a] += 1;
+		a += 1;
+	}
+	while (*b != '\0')
+	{
+		tab[(int)*b] -= 1;
+		b += 1;
+	}
+	while (++i < 126)
+		if (tab[i] != 0)
+			break ;
+	return (i < 126 ? 0 : 1);
 }
 
 /*

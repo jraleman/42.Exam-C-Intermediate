@@ -11,43 +11,54 @@
 /* ************************************************************************** */
 
 /*
-** ...
+** Count the numbers of two (2) that appears in the number n passed as argument.
+** Second argument keeps track of the current count state.
+** If a number has 2 or more digits, we have to split it into smaller digits.
+** We do this by using recursion.
+** If it's a single digit, we can check really quick because 2 == n. ;)
 */
 
-static void	count_number(int nb, int *count)
+static void	count_number(int n, int *count)
 {
-		if (nb >= 10)
-		{
-				count_number(nb / 10, count);
-				count_number(nb % 10, count);
-		}
-		if (nb == 2)
-				*count += 1;
-		return ;
+	if (n >= 10)
+	{
+		count_number(n / 10, count);
+		count_number(n % 10, count);
+	}
+	if (n == 2)
+		*count += 1;
+	return ;
 }
 
 /*
-** ...
+** Counts, for a given integer n, the number of two (2) that appear in all
+** the numbers between 0 and n (inclusive).
 */
 
-int			count_of_2(int nb)
+int			count_of_2(int n)
 {
-		int i;
-		int count;
+	int		i;
+	int		count;
 
-		i = 1;
-		count = 0;
-		while (++i <= nb)
-				count_number(i, &count);
-		return (count);
+	i = 1;
+	count = 0;
+	while (++i <= n)
+		count_number(i, &count);
+	return (count);
 }
+
+/*
+** Main function. Uncomment to test this file!
+*/
 
 /*
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(void)
+int			main(int argc, char *argv[])
 {
-		printf("%i\n", count_of_2(25));
-		return (0);
+	if (argc == 2)
+		printf("%i\n", count_of_2(atoi(argv[1])));
+	return (0);
 }
 */

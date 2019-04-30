@@ -1,6 +1,6 @@
 Assignment name  : is_anagram
 Expected files   : is_anagram.c
-Allowed functions: 
+Allowed functions:
 --------------------------------------------------------------------------------
 ALERT: OPTIMIZED SOLUTION REQUIRED.
 An anagram is a sequence of characters formed by rearranging the letters of
@@ -15,13 +15,13 @@ find an optimized solution which will run in O(sa + sb) time (where sa is
 the length of a and sb length of b).
 - Our tested string will always be a sequence of ascii characters between 32
 and 126 inclusive.
-- The bigger test we will do is on 2 sequences of 1.000.000 characteres each.
+- The bigger test we will do is on 2 sequences of 1.000.000 characters each.
 It should run in less than 2 seconds.
 Example 1:
 a='abcdef'
 b='fabcde'
 In this case, these two strings are anagrams, your function should return 1.
-Example 2: 
+Example 2:
 a='.123?.'
 b='?321..'
 In this case, these two strings are anagrams, your function should return 1.

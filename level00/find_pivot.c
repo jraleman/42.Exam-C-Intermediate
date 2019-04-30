@@ -16,8 +16,9 @@
 
 static int	get_sum(int *arr, int n)
 {
-	int		sum = 0;
+	int		sum;
 
+	sum = 0;
 	for (int i = 0; i < n; i += 1)
 		sum += arr[i];
 	return (sum);
@@ -30,10 +31,13 @@ static int	get_sum(int *arr, int n)
 
 int			find_pivot(int *arr, int n)
 {
-	int		sum = get_sum(arr, n);
-	int		count = 0;
-	int 	pivot = -1;
+	int		sum;
+	int		count;
+	int 	pivot;
 
+	count = 0;
+	pivot = -1;
+	sum = get_sum(arr, n);
 	for (int i = 0; (pivot == -1 && i < n); i += 1)
 	{
 		sum -= arr[i];
@@ -44,11 +48,12 @@ int			find_pivot(int *arr, int n)
 }
 
 /*
+** Main function. Uncomment to test this file!
+*/
+
+/*
 #include <stdio.h>
 #include <stdlib.h>
-
-// Main function
-// Uncomment to test the find_pivot function
 
 int 		main(int argc, const char *argv[])
 {
