@@ -31,13 +31,10 @@ static int	get_sum(int *arr, int n)
 
 int			find_pivot(int *arr, int n)
 {
-	int		sum;
-	int		count;
-	int 	pivot;
+	int		count = 0;
+	int 	pivot = -1;
+	int		sum = get_sum(arr, n);
 
-	count = 0;
-	pivot = -1;
-	sum = get_sum(arr, n);
 	for (int i = 0; (pivot == -1 && i < n); i += 1)
 	{
 		sum -= arr[i];

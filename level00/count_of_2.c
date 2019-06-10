@@ -37,11 +37,9 @@ static void	count_number(int n, int *count)
 
 int			count_of_2(int n)
 {
-	int		i;
-	int		count;
+	int		i = 1;
+	int		count = 0;
 
-	i = 1;
-	count = 0;
 	while (++i <= n)
 		count_number(i, &count);
 	return (count);
