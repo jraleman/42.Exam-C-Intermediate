@@ -12,48 +12,66 @@
 
 #include <stdio.h>
 
-static int  is_alpha(int c)
+/*
+** Returns true if a character is alphabetical.
+*/
+
+static int	is_alpha(int c)
 {
-    return (c >= 'a' && c <= 'z');
+	return (c >= 'a' && c <= 'z');
 }
 
-static char	*lowcase_str(char *str)
-{
-  	int		i = -1;
+/*
+** Lowcase a string passed as parameter.
+*/
 
-  	while (str[++i])
-        str[i] += (str[i] >= 'A' && str[i] <= 'Z') ? 32 : 0;
-  	return (str);
+static char	*lowcase(char *str)
+{
+	for (int i = 0; str[i]; i += 1)
+		str[i] += (str[i] >= 'A' && str[i] <= 'Z') ? 32 : 0;
+	return (str);
 }
 
-static int  count_alpha(char *str)
-{
-    int     alpha_tab[26] = {0};
-    char    *alpha_str = lowcase_str(str);
-    int     alpha_total = 0;
-    int     i = -1;
+/*
+** Takes a string and displays the number of occurences of its alpha characters.
+** Other characters are not counted. The printed characters must follow the
+** order of occurence in the string. The display must end by a newline. 
+*/
 
-    while (alpha_str[++i])
-        alpha_tab[alpha_str[i] - 'a'] += (is_alpha(alpha_str[i]) ? 1 : 0);
-    i = -1;
-    while (alpha_str[++i])
-    {
-        if (alpha_tab[alpha_str[i] - 'a'] > 0)
-        {
-            if (alpha_total > 0)
-                printf(", ");
-            printf("%d%c", alpha_tab[alpha_str[i] - 'a'], alpha_str[i]);
-            alpha_tab[alpha_str[i] - 'a'] = 0;
-            alpha_total += 1;
-        }
-    }
-    return (0);
+static int  count_alpha(char *s)
+{
+	int		tab[26] = {0};
+	char	*str = lowcase(s);
+	int		total = 0;
+	int		i = -1;
+
+	while (str[++i])
+		tab[str[i] - 'a'] += (is_alpha(str[i]) ? 1 : 0);
+	i = -1;
+	while (str[++i])
+	{
+		if (tab[str[i] - 'a'] > 0)
+		{
+			if (total > 0)
+				printf(", ");
+			printf("%d%c", tab[str[i] - 'a'], str[i]);
+			tab[str[i] - 'a'] = 0;
+			total += 1;
+		}
+	}
+	return (0);
 }
 
-int         main(int argc, char const *argv[])
+/*
+** Main function.
+** This is a program, so this one is needed.
+** DO NOT COMMENT :)
+*/
+
+int         main(int argc, char *argv[])
 {
-    if (argc == 2)
-        count_alpha((char *)argv[1]);
-    printf("\n");
-    return (0);
+	if (argc == 2)
+		count_alpha(argv[1]);
+	printf("\n");
+	return (0);
 }

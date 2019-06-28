@@ -25,44 +25,44 @@ struct  s_queue
 
 struct s_queue      *init(void)
 {
-    struct s_queue  *queue = malloc(sizeof(struct s_queue));
+    struct s_queue  *q = malloc(sizeof(struct s_queue));
 
     queue->first = NULL;
     queue->last = NULL;
-    return (queue);
+    return (q);
 }
-void                enqueue(struct s_queue *queue, void *content)
+void                enqueue(struct s_queue *q, void *c)
 {
-    struct s_node   *node = malloc(sizeof(struct s_node));
+    struct s_node   *n = malloc(sizeof(struct s_node));
 
-    node->content = content;
-    node->next = NULL;
+    n->content = c;
+    n->next = NULL;
     if (!queue->first)
-        queue->first = node;
+        queue->first = n;
     if (queue->last)
-        queue->last->next = node;
-    queue->last = node;
+        queue->last->next = n;
+    queue->last = n;
     return ;
 }
-void                *dequeue(struct s_queue *queue)
+void                *dequeue(struct s_queue *q)
 {
-    void            *content = NULL;
-    struct s_node   *node = queue->first;
+    void            *c = NULL;
+    struct s_node   *n = queue->first;
 
     if (queue->first)
     {
-        content = node->content;
-        queue->first = node->next;
+        c = n->content;
+        queue->first = n->next;
         queue->last = (queue->first ? queue->last : NULL);
-        free(node);
+        free(n);
     }
-    return (content);
+    return (c);
 }
-void                *peek(struct s_queue *queue)
+void                *peek(struct s_queue *q)
 {
     return (queue->first ? queue->first->content : NULL);
 }
-int                 isEmpty(struct s_queue *queue)
+int                 isEmpty(struct s_queue *q)
 {
     return (!queue->first ? 1 : 0);
 }

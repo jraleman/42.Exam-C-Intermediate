@@ -1,4 +1,4 @@
-# 42_Exam-C-Intermediate
+ # 42_Exam-C-Intermediate
 
 ## Exam
 The exam goes by levels, starting from level 0.
@@ -9,29 +9,21 @@ but without getting the full marks.
 ## TODO
 The following solutions are pending:
 
-### Level 00
-  - cont_of_2 (fails test 9)
-  - equation
-  - print_doubleon
-
-### Level 01
-  - count_alpha
-  - height_tree
-  - queue
-  - stack
-
 ### Level 02
   - is_looping
   - longest_sequence
   - ord_alphlong
-  - reverse_tree
   - str_maxlenoc
+
+----
 
 ### Level 03
   - can_split
   - convert_bst
   - gold_gain
   - width_tree
+
+----
 
 ### Level 04
   - clone_list
@@ -40,8 +32,12 @@ The following solutions are pending:
   - range_comb
   - volume_histogram
 
+----
+
 ### Level 05
   - count_island
   - g_diam
   - infin_add
   - infin_mult
+
+https://github.com/Manmeet2018/42_Exam-C-Intermediate

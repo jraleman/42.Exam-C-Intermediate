@@ -33,14 +33,15 @@ struct s_stack      *init(void)
 void                *pop(struct s_stack *stack)
 {
     void            *content = NULL;
-    struct s_node   *node = stack->top;
+    struct s_node   *node;
 
     if (stack->top)
     {
-      content = stack->top->content;
-      stack->top = node->next;
-      free(node);
-      node = NULL;
+        node = stack->top;
+        content = stack->top->content;
+        stack->top = stack->top->next;
+        free(node);
+        node = NULL;
     }
     return (content);
 }
@@ -51,14 +52,12 @@ void                push(struct s_stack *stack, void *content)
     node->content = content;
     node->next = stack->top;
     stack->top = node;
-    free(node);
-    node = NULL;
     return ;
 }
 
 void                *peek(struct s_stack *stack)
 {
-    return (stack->top ? stack->top->content : 0);
+    return (stack->top ? stack->top->content : NULL);
 }
 
 int                 isEmpty(struct s_stack *stack)

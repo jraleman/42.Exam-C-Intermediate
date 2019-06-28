@@ -6,15 +6,17 @@
 /*   By: jaleman <jaleman@student.42.us.org>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 20:58:59 by jaleman           #+#    #+#             */
-/*   Updated: 2018/09/05 20:59:00 by jaleman          ###   ########.fr       */
+/*   Updated: 2019/06/28 00:42:02 by jaleman          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+/*
+** Structure of a node
+*/
 
-struct					s_node
+struct			    s_node
 {
-  int						value;
+  int			      value;
   struct s_node	**nodes;
 };
 
@@ -25,17 +27,43 @@ struct					s_node
 
 int				height_tree(struct s_node *root)
 {
-		int		tmp = 0;
-		int		height = 0;
+	int			max = 0;
+	int			height = 0;
 
-		if (root != NULL)
-    {
-      for (int i = 0; root->nodes[i]; i += 1)
-      {
-          tmp = height_tree(root->nodes[i]) + 1;
-          if (tmp > height)
-            height = tmp;
-      }
-    }
-		return (height);
+	if (!root)
+		return (-1);
+	for (int i = 0; root->nodes[i]; i += 1)
+		if ((max = (height_tree(root->nodes[i]) + 1)) > height)
+			height = max;
+	return (height);
 }
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+struct s_node *new_node(int item)
+{
+	struct s_node *new = (struct s_node *)malloc(sizeof(struct s_node));
+	new->value = item;
+	new->nodes = malloc(1000);
+	return (new);
+}
+
+int main (void)
+{
+	struct s_node *t = new_node(94);
+	t->nodes[0] = new_node(34);
+	t->nodes[1] = new_node(52);
+	
+	t->nodes[0]->nodes[0] = new_node(1);
+	t->nodes[0]->nodes[1] = new_node(99);
+	t->nodes[0]->nodes[2] = new_node(11);
+	
+	t->nodes[0]->nodes[1]->nodes[0] = new_node(13);
+	
+	
+	printf("%d", height_tree(t));
+	return (0);
+}
+*/

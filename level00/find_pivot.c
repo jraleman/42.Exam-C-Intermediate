@@ -16,9 +16,8 @@
 
 static int	get_sum(int *arr, int n)
 {
-	int		sum;
+	int		sum = 0;
 
-	sum = 0;
 	for (int i = 0; i < n; i += 1)
 		sum += arr[i];
 	return (sum);
