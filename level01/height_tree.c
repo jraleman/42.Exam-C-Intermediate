@@ -10,60 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-** Structure of a node
-*/
-
-struct			    s_node
+struct 	s_node
 {
-  int			      value;
-  struct s_node	**nodes;
+	int           	value;
+	struct s_node 	**nodes;
 };
 
-/*
-**  ~~ Helping Source ~~
-**  https://stackoverflow.com/a/43911296
-*/
-
-int				height_tree(struct s_node *root)
+int		height_tree(struct s_node *root)
 {
-	int			max = 0;
-	int			height = 0;
+	int	current = 0;
+	int	height = 0;
 
 	if (!root)
 		return (-1);
 	for (int i = 0; root->nodes[i]; i += 1)
-		if ((max = (height_tree(root->nodes[i]) + 1)) > height)
-			height = max;
+		if ((current = height_tree(root->nodes[i]) + 1) > height)
+			height = current;
 	return (height);
 }
 
 /*
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-struct s_node *new_node(int item)
+int		main(void)
 {
-	struct s_node *new = (struct s_node *)malloc(sizeof(struct s_node));
-	new->value = item;
-	new->nodes = malloc(1000);
-	return (new);
-}
+	struct s_node *root;
 
-int main (void)
-{
-	struct s_node *t = new_node(94);
-	t->nodes[0] = new_node(34);
-	t->nodes[1] = new_node(52);
-	
-	t->nodes[0]->nodes[0] = new_node(1);
-	t->nodes[0]->nodes[1] = new_node(99);
-	t->nodes[0]->nodes[2] = new_node(11);
-	
-	t->nodes[0]->nodes[1]->nodes[0] = new_node(13);
-	
-	
-	printf("%d", height_tree(t));
+	root = malloc(sizeof(struct s_node));
+	root->value = 1;
+	root->nodes = malloc(sizeof(struct s_node));
+
+	root->nodes[0] = malloc(sizeof(struct s_node));
+	root->nodes[0]->value = 2;
+	root->nodes[0]->nodes = malloc(sizeof(struct s_node));
+
+	root->nodes[0]->nodes[0] = malloc(sizeof(struct s_node));
+	root->nodes[0]->nodes[0]->value = 3;
+	root->nodes[0]->nodes[0]->nodes = malloc(sizeof(struct s_node));
+
+	root->nodes[0]->nodes[0]->nodes[0] = malloc(sizeof(struct s_node));
+	root->nodes[0]->nodes[0]->nodes[0]->value = 4;
+	root->nodes[0]->nodes[0]->nodes[0]->nodes = malloc(sizeof(struct s_node));
+
+	root->nodes[0]->nodes[0]->nodes[0]->nodes[0] = NULL;
+
+	printf("%d\n", height_tree(root));
 	return (0);
 }
 */
